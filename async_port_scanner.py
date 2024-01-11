@@ -38,10 +38,7 @@ async def scan_ports(host:str, ports:Iterable[int]):
             except StopIteration:
                 end = True
                 break
-        start = time()
-        
         await asyncio.gather(*(scan_port(host, port) for port in batch))
-        print(time() - start)
         if end: return
         
     
